@@ -1,3 +1,11 @@
+"""
+Author : Raghav Bhatnagar
+Email : raghavbhatnagar96@gmail.com
+Subject : getting data from amazon.
+Description:
+Getting data from amazon on the basis of query search by the user.
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import multiprocessing
