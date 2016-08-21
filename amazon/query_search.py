@@ -33,7 +33,7 @@ url = 'http://www.amazon.in/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywor
 urlArray = []
 for i in range(1,4):
      urlArray.append(url+'&page='+str(i))
-print urlArray
+#print urlArray
 pool = multiprocessing.Pool(processes=3) # how much parallelism?
 pool.map(AmazonScrape, urlArray)
 
