@@ -38,26 +38,29 @@ def getproduct1(htmltext):
                             #print data['title']
                         j=j+1
                     dictionary = {'pu-old':'','pu-off-per else':'','fk-font-17 fk-bold 11':'','fk-font-17 fk-bold':'','pu-emi fk-font-12':''}
-                    for data1 in div.findAll('span',attrs={'class':'pu-old'}):
-                        if(data1.string!=None):
-                            dictionary['pu-old'] = data1.strings
-                        print data1.string
-                    for data2 in div.findAll('span',attrs={'class':'pu-off-per else'}):
-                        if(data2.string!=None):
-                            dictionary['pu-off-per else'] = data2.string
-                        print data2.string
-                    for data3 in div.findAll('span',attrs={'class':'fk-font-17 fk-bold 11'}):
-                        if(data3.string!=None):
-                            dictionary['fk-font-17 fk-bold 11'] = data3.string
-                        print data3.string
-                    for data4 in div.findAll('span',attrs={'class':'fk-font-17 fk-bold'}):
-                        if(data3.string!=None):
-                            dictionary['fk-font-17 fk-bold'] = data4.string
-                        print data4.string
-                    for data5 in div.findAll('div',attrs={'class':'pu-emi fk-font-12'}):
-                        if(data5.string!=None):
-                            dictionary['pu-emi fk-font-12'] = data5.string
-                        print data5.string
+
+                    data1 = div.findAll('span',attrs={'class':'pu-old'})
+                    if(len(data1)!=0):
+                        dictionary['pu-old'] = data1[0].string
+                        print data1[0].string , "old price"
+                    data2 = div.findAll('span',attrs={'class':'pu-off-per else'})
+                    if(len(data2)!=0):
+                        dictionary['pu-off-per else'] = data2[0].string
+                        print data2[0].string , "percent off"
+                    data3 = div.findAll('span',attrs={'class':'fk-font-17 fk-bold 11'})
+                    if(len(data3)!=0):
+                        dictionary['fk-font-17 fk-bold 11'] = data3[0].string
+                        print data3[0].string , "actual price"
+                    data4 = div.findAll('span',attrs={'class':'fk-font-17 fk-bold'})
+                    if(len(data4)!=0):
+                        dictionary['fk-font-17 fk-bold'] = data4[0].string
+                        print data4[0].string , "price after discount"
+                    data5 = div.findAll('div',attrs={'class':'pu-emi fk-font-12'})
+                    if(len(data5)!=0):
+                        dictionary['pu-emi fk-font-12'] = data5[0].string
+                        print data5[0].string
+                    data6 = div.findAll('a',{'class':'fk-display-block ssHashQuery'})
+                    print data6[0]["title"]
                 counter = counter + j
                 print counter
 
