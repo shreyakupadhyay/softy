@@ -41,8 +41,9 @@ def getproduct1(product,page):
                         value = data.get('title',data.get('href'))
                         if(value is None):
                             continue
-                        else:
-                            print data['href'] , 'number' , j
+                        #else:
+                         #   print "u"
+                            #print data['href'] , 'number' , j
                             #print data['title']
                         j=j+1
                     dic_details = {"product name":"","old price":"","discount":"","actual price":"","price after discount":"","EMI":""}
@@ -70,15 +71,14 @@ def getproduct1(product,page):
                         dic_details["EMI"] = data5[0].string
                  #       print data5[0].string , "EMI"
                     data6 = div.findAll('a',{'class':'fk-display-block ssHashQuery'})
-                    dic_details["EMI"] = data6[0]["title"]
+                    dic_details["product name"] = data6[0]["title"]
                 #    print data6[0]["title"]  , "Product Name"
                    # print dic_details
                     all_product.append(dic_details)
                 counter = counter + j
-                print counter
-                print len(all_product),"Length of all++++++++++++++++++"
-                print all_product
-            
+               # print counter
+                #print len(all_product),"Length of all++++++++++++++++++"
+            #print all_product
 
 
         except requests.exceptions.ConnectionError:
@@ -95,5 +95,24 @@ i=1
 for k in range(0,3):
     t = Thread(target=getproduct1,args=("iphone",str(i),))
     t.start()
-    i = i+20
+    #t.join()
     threadlist.append(t)
+    t.join()
+    i = i+20
+print all_product
+
+# for i in range(0,3):
+#     print t[i].join()
+
+"""
+returning a value from a function using threads.
+"""
+# from multiprocessing.pool import ThreadPool
+# pool = ThreadPool(processes=3)
+
+# async_result = pool.apply_async(getproduct1, ("iphone", str(i))) # tuple of args for foo
+
+# # do some other stuff in the main process
+
+# return_val = async_result.get()  # get the return value from your function.
+# print return_val
